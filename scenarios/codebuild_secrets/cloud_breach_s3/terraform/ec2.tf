@@ -1,6 +1,6 @@
 #IAM Role
 resource "aws_iam_role" "cg-banking-WAF-Role" {
-  name = "cg-banking-WAF-Role-${var.cgid}"
+  name = "Banking-WAF-Role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "cg-banking-WAF-Role-policy-attachment
 
 #IAM Instance Profile
 resource "aws_iam_instance_profile" "cg-ec2-instance-profile" {
-  name = "cg-ec2-instance-profile-${var.cgid}"
+  name = "ec2-instance-profile"
   role = "${aws_iam_role.cg-banking-WAF-Role.name}"
 }
 

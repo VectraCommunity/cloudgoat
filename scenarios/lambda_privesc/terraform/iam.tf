@@ -1,20 +1,20 @@
 #IAM User
-resource "aws_iam_user" "cg-chris" {
-  name = "chris-${var.cgid}"
+resource "aws_iam_user" "cg-chris-kp" {
+  name = "chris-kp@example.com"
   tags = {
-    Name     = "cg-chris-${var.cgid}"
+    Name     = "cg-chris-kp"
     Stack    = "${var.stack-name}"
     Scenario = "${var.scenario-name}"
   }
 }
 
-resource "aws_iam_access_key" "cg-chris" {
-  user = aws_iam_user.cg-chris.name
+resource "aws_iam_access_key" "cg-chris-kp" {
+  user = aws_iam_user.cg-chris-kp.name
 }
 
 # IAM roles
 resource "aws_iam_role" "cg-lambdaManager-role" {
-  name = "cg-lambdaManager-role-${var.cgid}"
+  name = "lambdaManager-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -22,7 +22,7 @@ resource "aws_iam_role" "cg-lambdaManager-role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "AWS": "${aws_iam_user.cg-chris.arn}"
+        "AWS": "${aws_iam_user.cg-chris-kp.arn}"
       },
       "Effect": "Allow",
       "Sid": ""
@@ -38,7 +38,7 @@ EOF
 }
 
 resource "aws_iam_role" "cg-debug-role" {
-  name = "cg-debug-role-${var.cgid}"
+  name = "admin-lambda-service-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -63,7 +63,7 @@ EOF
 
 # IAM Policies
 resource "aws_iam_policy" "cg-lambdaManager-policy" {
-  name = "cg-lambdaManager-policy-${var.cgid}"
+  name = "lambdaManager-policy"
   description = "cg-lambdaManager-policy-${var.cgid}"
   policy =<<EOF
 {
@@ -74,7 +74,8 @@ resource "aws_iam_policy" "cg-lambdaManager-policy" {
             "Effect": "Allow",
             "Action": [
                 "lambda:*",
-                "iam:PassRole"
+                "iam:PassRole",
+                "events:*"
             ],
             "Resource": "*"
         }
@@ -83,9 +84,9 @@ resource "aws_iam_policy" "cg-lambdaManager-policy" {
 EOF
 }
 
-resource "aws_iam_policy" "cg-chris-policy" {
-  name = "cg-chris-policy-${var.cgid}"
-  description = "cg-chris-policy-${var.cgid}"
+resource "aws_iam_policy" "chris-kp-policy" {
+  name = "chris-kp-policy"
+  description = "chris-kp-policy-${var.cgid}"
   policy =<<EOF
 {
     "Version": "2012-10-17",
@@ -116,7 +117,7 @@ resource "aws_iam_role_policy_attachment" "cg-lambdaManager-role-attachment" {
   policy_arn = aws_iam_policy.cg-lambdaManager-policy.arn
 }
 
-resource "aws_iam_user_policy_attachment" "cg-chris-attachment" {
-  user = aws_iam_user.cg-chris.name
-  policy_arn = aws_iam_policy.cg-chris-policy.arn
+resource "aws_iam_user_policy_attachment" "cg-chris-kp-attachment" {
+  user = aws_iam_user.cg-chris-kp.name
+  policy_arn = aws_iam_policy.chris-kp-policy.arn
 }
