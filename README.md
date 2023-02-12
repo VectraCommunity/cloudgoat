@@ -10,7 +10,7 @@ _CloudGoat is Rhino Security Labs' "Vulnerable by Design" AWS deployment tool._
 
 # Quick reference
 - **Where to get help**:
-[the CloudGoat Community Slack](https://join.slack.com/t/pacu-cloudgoat/shared_invite/enQtNDE3OTk0MjA3NTA2LTRmOTVmZjEyYjIzOTYxMGJmZDc4ZDVkOGU3ZmJlOWZhNzdkYWQ2ZmQxNTFjZThjMmJlMDFmMTU4NzUwMDM2NmY), or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=cloudgoat)
+[the Rhino Security Labs Discord](https://discord.gg/xFXmqytprV), or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=cloudgoat)
 
 - **Where to file issues**:
 [https://github.com/RhinoSecurityLabs/cloudgoat/issues](https://github.com/RhinoSecurityLabs/cloudgoat/issues)
@@ -93,7 +93,7 @@ $ docker run -it -v ~/.aws:/root/.aws/ rhinosecuritylabs/cloudgoat:latest
 
 `$ ./cloudgoat.py create vulnerable_lambda`
 
-In this scenario, you start as the 'bilbo' user. You will assume a role with more privelages, discover a lambda function that applies policies to users, and exploit a vulnerability in the function to escalate the privelages of the bilbo user in order to search for secrets. 
+In this scenario, you start as the 'bilbo' user. You will assume a role with more privileges, discover a lambda function that applies policies to users, and exploit a vulnerability in the function to escalate the privelages of the bilbo user in order to search for secrets. 
 
 [Visit Scenario Page.](scenarios/vulnerable_lambda/README.md)
 
