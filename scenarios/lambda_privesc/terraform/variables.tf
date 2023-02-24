@@ -23,3 +23,7 @@ variable "stack-name" {
 variable "scenario-name" {
   default = "lambda-privesc"
 }
+
+variable "cg-chris-kp-name" {
+  default = "chris-kp@example.com"
+}

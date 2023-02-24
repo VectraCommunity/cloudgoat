@@ -10,3 +10,6 @@ output "cloudgoat_output_chris_secret_key" {
 output "cloudgoat_output_aws_account_id" {
   value = data.aws_caller_identity.aws-account-id.account_id
 }
+output "cloudgoat_output_user" {
+  value = aws_iam_user.cg-chris-kp.name
+}

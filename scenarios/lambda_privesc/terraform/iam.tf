@@ -1,6 +1,6 @@
 #IAM User
 resource "aws_iam_user" "cg-chris-kp" {
-  name = "chris-kp@example.com"
+  name = "${var.cg-chris-kp-name}"
   tags = {
     Name     = "cg-chris-kp"
     Stack    = "${var.stack-name}"

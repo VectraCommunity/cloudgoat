@@ -9,3 +9,6 @@ output "cloudgoat_output_target_ec2_server_ip" {
 output "cloudgoat_output_s3_bucket" {
   value = "${aws_s3_bucket.cg-cardholder-data-bucket.id}"
 }
+output "cloudgoat_output_ec2_profile_role_name" {
+  value = "${aws_iam_role.cg-banking-WAF-Role.name}"            
+}
