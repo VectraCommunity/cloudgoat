@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "cg-banking-WAF-Role-policy-attachment
 
 #IAM Instance Profile
 resource "aws_iam_instance_profile" "cg-ec2-instance-profile" {
-  name = "ec2-instance-profile"
+  name = "ec2-instance-profile-${var.cgid}"
   role = "${aws_iam_role.cg-banking-WAF-Role.name}"
 }
 

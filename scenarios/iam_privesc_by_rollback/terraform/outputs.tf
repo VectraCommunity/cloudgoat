@@ -18,3 +18,7 @@ output "cloudgoat_output_policy_arn" {
 output "cloudgoat_output_username" {
   value = "${aws_iam_user.cg-raynor.name}"
 }
+
+output "cloudgoat_output_s3_bucket" {
+  value = "${aws_s3_bucket.cg-cardholder-data-bucket.id}"
+}
