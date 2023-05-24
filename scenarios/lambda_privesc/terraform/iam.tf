@@ -1,6 +1,6 @@
 #IAM User
 resource "aws_iam_user" "cg-chris-kp" {
-  name = "${var.cg-chris-kp-name}"
+  name = "${var.cg-chris-kp-name}-${var.cgid}"
   tags = {
     Name     = "cg-chris-kp"
     Stack    = "${var.stack-name}"
@@ -38,7 +38,7 @@ EOF
 }
 
 resource "aws_iam_role" "cg-debug-role" {
-  name = "admin-lambda-service-role"
+  name = "admin-lambda-service-role"-${var.cgid}
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -85,7 +85,7 @@ EOF
 }
 
 resource "aws_iam_policy" "chris-kp-policy" {
-  name = "chris-kp-policy"
+  name = "chris-kp-policy"-${var.cgid}
   description = "chris-kp-policy-${var.cgid}"
   policy =<<EOF
 {
