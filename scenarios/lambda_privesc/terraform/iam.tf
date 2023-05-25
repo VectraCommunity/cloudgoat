@@ -63,7 +63,7 @@ EOF
 
 # IAM Policies
 resource "aws_iam_policy" "cg-lambdaManager-policy" {
-  name = "lambdaManager-policy"
+  name = "lambdaManager-policy-${var.cgid}"
   description = "cg-lambdaManager-policy-${var.cgid}"
   policy =<<EOF
 {
