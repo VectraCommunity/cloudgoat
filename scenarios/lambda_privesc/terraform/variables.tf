@@ -25,5 +25,5 @@ variable "scenario-name" {
 }
 
 variable "cg-chris-kp-name" {
-  default = "mike.jones@mikejones0522"
+  default = "chris-kp-cw"
 }
