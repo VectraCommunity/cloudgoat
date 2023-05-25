@@ -13,3 +13,9 @@ output "cloudgoat_output_aws_account_id" {
 output "cloudgoat_output_user" {
   value = aws_iam_user.cg-chris-kp.name
 }
+output "cloudgoat_output_lambda_service_role" {
+  value = aws_iam_role.cg-debug-role.name
+}
+output "cloudgoat_output_lambda_manager_role" {
+  value = aws_iam_role.cg-lambdaManager-role.name
+}

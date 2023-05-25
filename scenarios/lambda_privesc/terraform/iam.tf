@@ -14,7 +14,7 @@ resource "aws_iam_access_key" "cg-chris-kp" {
 
 # IAM roles
 resource "aws_iam_role" "cg-lambdaManager-role" {
-  name = "lambdaManager-role"
+  name = "lambdaManager-role-${var.cgid}"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
